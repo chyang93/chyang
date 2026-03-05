@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單字例句助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 單字例句助手</h1>
+            <p class="subtitle">輸入單字，獲取例句、對話和學習影片</p>
+        </header>
+
+        <main>
+            <!-- 語言選擇 -->
+            <div class="language-selector">
+                <label>選擇語言：</label>
+                <div class="language-buttons">
+                    <button class="lang-btn active" data-lang="english">🇺🇸 英文</button>
+                    <button class="lang-btn" data-lang="chinese">🇨🇳 中文</button>
+                    <button class="lang-btn" data-lang="korean">🇰🇷 韓文</button>
+                </div>
+            </div>
+
+            <!-- API Key 設定（已內建，無需輸入） -->
+            <div class="api-key-section" style="display: none;">
+                <label for="apiKeyInput">🔑 Gemini API Key (選填，填入後可自動生成例句)：</label>
+                <input type="password" id="apiKeyInput" class="api-key-input" placeholder="請輸入您的 Gemini API Key...">
+                <p class="api-key-hint">沒有 API Key？<a href="https://aistudio.google.com/app/apikey" target="_blank">點此免費獲取</a>。若未填寫將使用內建模板。</p>
+            </div>
+
+            <!-- 單字輸入區 -->
+            <div class="input-section">
+                <input type="text" id="wordInput" placeholder="請輸入單字..." autofocus>
+                <button id="searchBtn" class="search-btn">🔍 查詢</button>
+            </div>
+
+            <!-- 結果顯示區 -->
+            <div id="results" class="results-section hidden">
+                <!-- 單字資訊 -->
+                <div class="result-card word-info">
+                    <h2>📖 單字資訊</h2>
+                    <div id="wordDisplay" class="word-display"></div>
+                </div>
+
+                <!-- 例句 -->
+                <div class="result-card">
+                    <h2>✏️ 簡單例句</h2>
+                    <div id="sentenceDisplay" class="content-display"></div>
+                </div>
+
+                <!-- 對話問答 -->
+                <div class="result-card">
+                    <h2>💬 簡單對話</h2>
+                    <div id="dialogDisplay" class="content-display dialog-box"></div>
+                </div>
+
+                <!-- 學習影片 -->
+                <div class="result-card">
+                    <h2>🎬 學習影片</h2>
+                    <p class="video-hint">點擊下方連結觀看相關教學影片</p>
+                    <div id="videoDisplay" class="video-list"></div>
+                </div>
+            </div>
+
+            <!-- 載入中 -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>正在查詢中...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>💡 提示：使用初級簡單文法，適合語言學習初學者</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
